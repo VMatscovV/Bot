@@ -41,16 +41,13 @@ def start_message(message):
     bot.send_message(message.chat.id, '''Я могу:
     1. Показывать свежую информацию о МТУСИ
     2. Отправить ссылку на облако с полезными ресурсами
-    3. Также можете спросить меня о чём угодно в свободном порядке. Tсли у вас есть вопросы без ответов, то наверняка вам поможет гугл! Но я не совсем ленивый, так что спрошу на вики
-    
+    3. Также можете спросить меня о чём угодно в свободном порядке.    
     ''')
 
 
 @bot.message_handler(content_types=['text'])
 def answer(message):
     a = message.text.lower()
-    print(a[len(a)-1])
-    a = str(a)
     if a == "мтуси":
         bot.send_message(message.chat.id, 'Тогда тебе сюда – https://mtuci.ru/')
     elif a == "облако":
@@ -58,9 +55,7 @@ def answer(message):
                          'Псс, у меня есть немного полезной инфы для тебя. Иди за мной : https://drive.google.com/drive/folders/16abToWN02Pi9oFHISK64YP_k0pJNJHRx?usp=sharing')
     elif a == "ответы":
         bot.send_message(message.chat.id,
-                         'Пишите запрос с добаллением знака вопроса, поиск ведётся по заголовкам википедии')
+                         'Если у вас есть вопросы без ответов, то наверняка вам поможет гугл! Но я не совсем ленивый, так что спрошу на вики. Пишите запрос с добаллением знака вопроса, поиск ведётся по заголовкам википедии')
     elif a[len(a)-1]=="?":
         bot.send_message(message.chat.id, getwiki(message.text))
-
-
 bot.infinity_polling()
