@@ -56,6 +56,8 @@ def answer(message):
     elif a == "ответы":
         bot.send_message(message.chat.id,
                          'Если у вас есть вопросы без ответов, то наверняка вам поможет гугл! Но я не совсем ленивый, так что спрошу на вики. Пишите запрос с добаллением знака вопроса, поиск ведётся по заголовкам википедии')
-    elif a[len(a)-1]=="?":
+    elif a[len(a) - 1] == "?":
         bot.send_message(message.chat.id, getwiki(message.text))
-bot.infinity_polling()
+
+
+bot.polling(none_stop=True)
